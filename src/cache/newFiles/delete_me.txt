@@ -1,0 +1,1 @@
+This file exists because you can't commit empty folders to GIT. This file will get deleted when you run apply.php. But feel free to delete me if you wish... I've already served my purpose.
