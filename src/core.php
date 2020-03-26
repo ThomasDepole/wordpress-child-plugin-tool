@@ -9,7 +9,26 @@ $parentPluginDir = str_replace("-child/src", "", $currentDir);
 $childPluginDir = str_replace("/src", "", $currentDir);
 $modifiedDir = str_replace("/src", "/modifications", $currentDir);
 $originalDir = str_replace("/src", "/original", $currentDir);
+$removeDir = str_replace("/src", "/remove", $currentDir);
 $newfilesDir = str_replace("/src", "/src/cache/newFiles", $currentDir);
+
+//First delete the delete_me.txt files
+if(file_exists($childPluginDir . "/modifications/delete_me.txt"))
+    unlink($childPluginDir . "/modifications/delete_me.txt");
+if(file_exists($childPluginDir . "/original/delete_me.txt"))
+    unlink($childPluginDir . "/original/delete_me.txt");
+if(file_exists($childPluginDir . "/src/cache/newFiles/delete_me.txt"))
+    unlink($childPluginDir . "/src/cache/newFiles/delete_me.txt");
+
+//make sure the core directories exists
+if(!is_dir($childPluginDir . "/original"))
+    mkdir($childPluginDir . "/original", 0777, true);
+if(!is_dir($childPluginDir . "/modifications"))
+    mkdir($childPluginDir . "/modifications", 0777, true);
+if(!is_dir($childPluginDir . "/src/cache/newFiles"))
+    mkdir($childPluginDir . "/src/cache/newFiles", 0777, true);
+if(!is_dir($childPluginDir . "/remove"))
+    mkdir($childPluginDir . "/remove", 0777, true);
 
 //determine folder positions for cleaner path outputs
 $currentPaths = explode("/", $currentDir);
@@ -94,7 +113,7 @@ function remove_server_path($path){
 }
 
 function revert($enableLogging = false){
-  global $originalDir, $parentPluginDir, $newfilesDir, $output;
+  global $originalDir, $parentPluginDir, $newfilesDir, $output, $removeDir;
 
   //loop through the files we modfied and apply those changes to the plugin directory
   foreach(get_file_list($originalDir, true) as $file){
