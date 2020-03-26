@@ -14,7 +14,7 @@ NOTE: This tool is used to modify a plugin but doesn't replace the plugin. You d
 
 ## Setup
 
-First, we need to create a new folder with the same name prefixed with -child in the same directory as the plugin you want to modify. For example, if we are going to modify the plugin "user-role-editor" we will create a folder in the same directory called "user-role-editor".
+First, we need to create a new folder with the same name with -child appended to the folder name in the same directory as the plugin you want to modify. For example, if we are going to modify the plugin "user-role-editor" we will create a folder in the same directory called "user-role-editor".
 
 After you created the child plugin folder copy and paste the content of this tool into that directory. That's all the setup needed. Now we can start modifying files. 
 
@@ -111,10 +111,10 @@ Here's what happens when you run apply.php
         /cache
             /newFiles
                 new_file_1.php (copy of new file)
-        new_file_2.php (copy of new file)
+            new_file_2.php (copy of new file)
 ```
 
-NOTE: the files in src/cache/newFiles are for the tool, you shouldn't need to update or view these files. This allows the tool to know which files to delete. 
+NOTE: the files in src/cache/newFiles are for the tool, you shouldn't need to update or view these files. This allows the tool to know which files to delete while reverting. 
 
 # Reverting Changes
 
@@ -126,7 +126,7 @@ NOTE: The plugin will leave behind folders if you created them in the modificati
 
 # Updating the Parent Plugin 
 
-When the time comes and you need to update the parent plugin you're in luck. You went through all this hassle to make this process easy!
+When the time comes and you need to update the parent plugin you're in luck. You went through all the hassle to make this process easy!
 
 1) Navigate to revert.php in your browser.
 2) Update the parent plugin.
@@ -139,7 +139,7 @@ That's it!
 
 Currently, this tool doesn't provide a way to delete files in the parent plugin directory. If you really need this feature please create a comment and I'll add that feature in the near future!
 
-This tool doesn't replace your existing plugin, you don't need to active this tool inside of Wordpress and you shouldn't leave this tool on your live site. 
+This tool doesn't replace your existing plugin, you don't need to activate this tool inside of Wordpress and you shouldn't leave this tool on your live site. 
 
 If you already modified a plugin you will need to use a diff tool to manually extract those changes into the modifications folder. The great thing about this tool is that it doesn't matter if you're already using the plugin, Wordpress won't know that you updated it so you don't have to make any changes in the Dashboard. 
 
