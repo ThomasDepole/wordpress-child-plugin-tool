@@ -82,7 +82,7 @@ function get_file_list($dir, $recurse = FALSE)
     $d = @dir($dir) or die("getFileList: Failed opening directory {$dir} for reading");
     while(FALSE !== ($entry = $d->read())) {
       // skip hidden files
-      if($entry{0} == ".") continue;
+      if($entry[0] == ".") continue;
       if(is_dir("{$dir}{$entry}")) {
         $retval[] = [
           'name' => "{$dir}{$entry}/",
